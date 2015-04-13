@@ -1,0 +1,30 @@
+{% extends "base.hjs" %}
+
+{% block content %}
+	<form method='post'>
+		<input type='text' class='search' name='name' placeholder='Tool Name'>
+		<input type='text' class='search' name='purpose' placeholder='Its purpose'>
+		<input type='text' class='search' name='homepage_url' placeholder='A link to it'>
+		<input type='text' class='search' name='submitter_username' placeholder='Your handle'>
+		<input type='submit' class='submit' value='Add'>
+	</form>
+	<table id='tools'>
+		<tr class='tool table-header'>
+			<td class='tool-title'>
+				Project Name
+			</td>
+			<td class='tool-description'>
+				Description
+			</td>
+		{% for tool in tools %}
+			<tr class='tool'>
+				<td class='tool-title'>
+					<a href='{{ tool.homepage_url}}'> {{ tool.name }} </a>
+				</td>
+				<td class='tool-description'>
+					{{ tool.purpose }}
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
